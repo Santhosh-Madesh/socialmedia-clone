@@ -1,0 +1,27 @@
+{% extends 'content/content_creation.html' %}
+{% block title %}Feed{% endblock title %}
+
+{% block content %}
+
+  <nav>
+    <a href="{% url 'content_create' %}">Create</a>
+    <a href="">Profile</a>
+  </nav><br>
+
+  {% if messages %}
+    {% for message in messages %}
+      {{message}}<br>
+    {% endfor %}
+  {% endif %}
+  
+  {% if posts %}
+    {% for obj in posts %}
+      <img src="{{obj.picture.url}}" alt="Image">
+      <span>
+        <p>{{obj.caption}}</p>
+      </span>
+    {% endfor %}
+  {% endif %}
+
+
+{% endblock content %}
