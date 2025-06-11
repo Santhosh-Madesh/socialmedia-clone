@@ -3,7 +3,7 @@
 
 {% block content %}
   {% for data in comments %}
-    {{data}}<br>
+    {{data.comment}}<br>
   {% endfor %}
   <form method="post">
     {% csrf_token %}
