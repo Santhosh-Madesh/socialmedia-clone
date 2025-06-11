@@ -19,9 +19,11 @@
     <div>
       <img src="{{obj.picture.url}}" alt="Image">
       <p>{{obj.caption}}</p>
-      <a>Likes </a><a href="{% url 'comment' obj.pk %}"> comment</a>
+      {{obj.likes}} likes <br>
+      <a href="{% url 'like' obj.pk %}">Like </a><a href="{% url 'comment' obj.pk %}"> comment </a><a>Share </a><a> Save</a>
     </div><br>
     {% endfor %}
+    <p>!------- End of the Feed -------!</p>
   {% endif %}
 
 
