@@ -4,7 +4,7 @@ from .models import Posts, Comments
 class PostsModelForm(forms.ModelForm):
     class Meta:
         model = Posts
-        exclude = [""]
+        exclude = ["likes"]
 
 class CommentModelForm(forms.ModelForm):
     class Meta:
