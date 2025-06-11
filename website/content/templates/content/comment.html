@@ -1,0 +1,13 @@
+{% extends 'content/content_creation.html' %}
+{% block title %}Comment{% endblock title %}
+
+{% block content %}
+  {% for data in comments %}
+    {{data}}<br>
+  {% endfor %}
+  <form method="post">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="upload"> 
+  </form>
+{% endblock content %}
