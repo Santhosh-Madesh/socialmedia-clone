@@ -35,3 +35,9 @@ class CommentCreateView(CreateView):
         form = instance
         form.save()
         return redirect("content_feed")
+    
+def like(request, pk):
+    post = Posts.objects.get(id = pk)
+    post.likes += 1
+    post.save()
+    return redirect("content_feed")
