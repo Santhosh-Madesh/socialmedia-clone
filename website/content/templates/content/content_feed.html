@@ -16,10 +16,11 @@
   
   {% if posts %}
     {% for obj in posts %}
+    <div>
       <img src="{{obj.picture.url}}" alt="Image">
-      <span>
-        <p>{{obj.caption}}</p>
-      </span>
+      <p>{{obj.caption}}</p>
+      <a>Likes </a><a href="{% url 'comment' obj.pk %}"> comment</a>
+    </div><br>
     {% endfor %}
   {% endif %}
 
