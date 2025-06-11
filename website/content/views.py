@@ -22,6 +22,12 @@ class CommentCreateView(CreateView):
     template_name = "content/comment.html"
     success_url = reverse_lazy("content_feed")
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        pk = self.kwargs["pk"]
+        context["comments"] = Comments.objects.filter(posts=pk)
+        return context
+
     def form_valid(self, form, **kwargs):
         instance = form.save(commit=False)
         pk = self.kwargs.get("pk")
