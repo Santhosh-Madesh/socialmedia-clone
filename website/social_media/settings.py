@@ -31,8 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'content.apps.UserManagementConfig',
     'content.apps.ContentConfig',
+    'user_management.apps.UserManagementConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -128,3 +128,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "content/media")
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+from django.urls import reverse_lazy
+
+LOGIN_REDIRECT_URL = reverse_lazy("content_feed")
+
+LOGIN_URL = reverse_lazy("login")
