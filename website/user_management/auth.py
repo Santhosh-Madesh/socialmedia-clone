@@ -3,6 +3,8 @@ from django.views.generic.edit import CreateView
 from .forms import SignUpModelForm, LoginModelForm
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
+from django.contrib.auth import logout
+from django.shortcuts import redirect
 
 class SignUpPageView(CreateView):
     model = User
@@ -17,8 +19,15 @@ class SignUpPageView(CreateView):
         return super().form_valid(form)
 
 class LoginPageView(LoginView):
-    form_class = LoginModelForm
+    redirect_authenticated_user = True
     template_name = "user_management/login.html"
     success_url = reverse_lazy("content_feed")
-
-    # needs furthure coding
+    
+class LogoutPageView(LogoutView):
+    def get(self, request, *args, **kwargs):
+        logout(request)
+        return redirect("login")
+    
+def logoutPage(request):
+    logout(request)
+    return redirect("login")
